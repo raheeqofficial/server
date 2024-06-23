@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv/config');
-const authJwt = require('./helper/jwt.js');
+// const authJwt = require('../helper/jwt.js');
 
 app.use(cors());
 app.options('*', cors());
@@ -20,9 +20,9 @@ app.use(express.static("uploads"));
 // app.use(authJwt())
 
 // Routes
-const categoryRoute = require('./routes/category.route');
-const subCatRoute = require('./routes/subCat.route');
-const productRoute = require('./routes/product.route');
+const categoryRoute = require('./routes/category.route.js');
+const subCatRoute = require('./routes/subCat.route.js');
+const productRoute = require('./routes/product.route.js');
 const imageUploadRoutes = require('./helper/imageUpload.js');
 const productWeightRoutes = require('./routes/productWeight.js');
 const productRAMSRoutes = require('./routes/productRAMS.js');
