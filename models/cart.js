@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const cartSchema = mongoose.Schema({
+    staticId: {
+        type: String,
+        required: true,
+      },
     productTitle:{
         type:String,
         required:true

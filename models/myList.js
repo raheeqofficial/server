@@ -37,6 +37,10 @@ const myListSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    staticId:{
+        type:String,
+        required:true
+    },
     userId:{
         type:String,
         required:true

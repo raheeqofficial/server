@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const productSchema = mongoose.Schema({
-    
+    staticId: {
+        type: String,
+        // required: true,
+        unique: true,
+        default: function() {
+      return 'rgstore-' + Math.random().toString(36).substr(2, 9);
+    }
+      },
     name: {
         type: String,
         required: true

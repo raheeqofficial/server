@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 
 const recentlyViewdSchema = mongoose.Schema({
+    staticId: {
+        type: String,
+        // required: true,
+        unique: true,
+        default: function() {
+      return 'rgstore-' + Math.random().toString(36).substr(2, 9);
+    }
+      },
     prodId:{
         type:String,
         default:''

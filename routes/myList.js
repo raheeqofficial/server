@@ -24,7 +24,7 @@ router.get(`/`, async (req, res) => {
 
 router.post('/add', async (req, res) => {
 
-    const item = await MyList.find({productId:req.body.productId, userId: req.body.userId});
+    const item = await MyList.find({productId:req.body.productId, staticId: req.body.staticId, userId: req.body.userId});
 
     if(item.length===0){
         let list = new MyList({
@@ -37,6 +37,7 @@ router.post('/add', async (req, res) => {
             rating: req.body.rating,
             price: req.body.price,
             productId: req.body.productId,
+            staticId: req.body.staticId,
             userId: req.body.userId
         });
     

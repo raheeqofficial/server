@@ -176,6 +176,7 @@ router.post(`/recentlyViewd`, async (req, res) => {
 
     if(findProduct.length===0){
         product = new RecentlyViewd({
+            staticId: req.body.staticId,
             prodId:req.body.id,
             name: req.body.name,
             description: req.body.description,
@@ -227,6 +228,15 @@ router.get('/:id', async(req, res) => {
     }
     return res.status(200).send(product)
 });
+router.get('/staticId/:staticId', async (req, res) => {
+    try {
+      const product = await Product.findOne({ staticId: req.params.staticId });
+      if (!product) return res.status(404).json({ message: 'Product not found' });
+      res.json(product);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
 
 router.get(`/get/count`, async (req, res) =>{
     const productsCount = await Product.countDocuments()
@@ -259,6 +269,7 @@ router.post('/create', async(req, res) => {
 
 
     let product = new Product({
+        staticId: req.body.staticId,
         name: req.body.name,
         description: req.body.description,
         images: images_Array,
